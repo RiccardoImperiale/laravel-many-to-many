@@ -42,7 +42,6 @@ class ProjectController extends Controller
         $img_path = Storage::put('uploads', $request->image);
         $val_data['image'] = $img_path;
 
-
         Project::create($val_data);
 
         return to_route('admin.projects.index')->with('message', 'Project created successfully');
