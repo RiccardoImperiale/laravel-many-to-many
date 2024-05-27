@@ -9,5 +9,11 @@
             </a>
         </div>
     </header>
-    @include('partials.all-projects')
+    @if (count($projects) > 0)
+        @include('partials.all-projects')
+    @else
+        <div class="container pt-5">
+            <h4>Sorry, no products to show...</h4>
+        </div>
+    @endif
 @endsection

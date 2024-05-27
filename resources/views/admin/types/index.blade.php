@@ -9,5 +9,11 @@
             </a>
         </div>
     </header>
-    @include('partials.all-types')
+    @if (count($types) > 0)
+        @include('partials.all-types')
+    @else
+        <div class="container pt-5">
+            <h4>Sorry, no types to show...</h4>
+        </div>
+    @endif
 @endsection

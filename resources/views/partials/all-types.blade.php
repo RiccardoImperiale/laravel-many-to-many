@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @forelse ($types as $type)
+                @foreach ($types as $type)
                     <tr>
                         <th scope="row">{{ $type->id }}</th>
                         <td>{{ $type->name }}</td>
@@ -71,9 +71,7 @@
                             </div>
                         </td>
                     </tr>
-                @empty
-                    <p>Sorry, no types to show...</p>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
 

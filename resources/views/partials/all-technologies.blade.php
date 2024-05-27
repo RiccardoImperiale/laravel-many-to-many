@@ -5,68 +5,62 @@
             <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">title</th>
-                    <th scope="col">type</th>
-                    <th scope="col">image</th>
+                    <th scope="col">name</th>
+                    <th scope="col">slug</th>
                     <th class="text-end" scope="col">actions</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ($projects as $project)
+                @foreach ($technologies as $tech)
                     <tr>
-                        <th scope="row">{{ $project->id }}</th>
-                        <td>{{ $project->title }}</td>
-                        <td>{{ $project->type?->name ?? 'no type' }}</td>
-                        <td>
-                            @if (Str::startsWith($project->image, 'uploads/'))
-                                <div class="image_container">
-                                    <img src="{{ asset("storage/$project->image") }}" alt="{{ $project->title }}">
-                                </div>
-                            @endif
-                        </td>
+                        <th scope="row">{{ $tech->id }}</th>
+                        <td>{{ $tech->name }}</td>
+                        <td>{{ $tech->slug }}</td>
                         <td>
                             <div class="d-flex justify-content-end gap-1">
-                                <a class="btn btn-dark" href="{{ route('admin.projects.show', $project) }}">
-                                    <span style="font-size: 0.7rem" class="text-uppercase">View</span>
-                                </a>
-                                <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">
+
+                                {{-- <a class="btn btn-dark" href="{{ route('admin.technologies.show', $tech) }}">
+                                    <span style="font-size: 0.7rem" class="text-uppercase">Show</span>
+                                </a> --}}
+
+                                <a class="btn btn-dark" href="{{ route('admin.technologies.edit', $tech) }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
                                 </a>
 
                                 <!-- Modal trigger button -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#modal-{{ $project->id }}">
+                                <button tech="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modal-{{ $tech->id }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">Delete</span>
                                 </button>
 
-                                <div class="modal fade" id="modal-{{ $project->id }}" tabindex="-1"
+                                <div class="modal fade" id="modal-{{ $tech->id }}" tabindex="-1"
                                     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                                    aria-labelledby="modalTitle-{{ $project->id }}" aria-hidden="true">
+                                    aria-labelledby="modalTitle-{{ $tech->id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
                                         role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modalTitle-{{ $project->id }}">
-                                                    Delete project
+                                                <h5 class="modal-title" id="modalTitle-{{ $tech->id }}">
+                                                    Delete tech
                                                 </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button tech="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete this project:
-                                                {{ $project->title }}
+                                                Are you sure you want to delete this tech:
+                                                {{ $tech->name }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
+                                                <button tech="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <form action="{{ route('admin.projects.destroy', $project) }}"
+                                                <form action="{{ route('admin.technologies.destroy', $tech) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger">
+                                                    <button tech="submit" class="btn btn-danger">
                                                         Confirm
                                                     </button>
                                                 </form>
@@ -81,6 +75,6 @@
             </tbody>
         </table>
 
-        {{ $projects->links('pagination::bootstrap-5') }}
+        {{ $technologies->links('pagination::bootstrap-5') }}
     </div>
 </div>
