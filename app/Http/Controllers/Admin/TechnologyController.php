@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -23,7 +25,8 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::all();
+        return view('admin.technologies.create', compact('projects'));
     }
 
     /**
@@ -31,7 +34,17 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        $val_data['slug'] = Str::slug($request->name, '-');
+
+        // dd($val_data);
+        $tech = Technology::create($val_data);
+
+        if ($request->has('projects')) {
+            $tech->projects()->attach($val_data['projects']);
+        }
+
+        return to_route('admin.technologies.index')->with('message', 'Technology created successfully');
     }
 
     /**
