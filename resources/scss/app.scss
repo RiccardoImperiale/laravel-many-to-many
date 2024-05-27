@@ -1,0 +1,28 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+.image_container {
+    width: 100px;
+    height: 50px;
+    display: flex;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.pagination {
+    margin-top: 5rem;
+}
+
+.page-link {
+    color: #656565;
+}
+
+.page-link.active,
+.active>.page-link {
+    background-color: #EF3B2D;
+    border-color: #EF3B2D;
+}
