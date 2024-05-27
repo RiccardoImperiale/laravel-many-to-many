@@ -7,17 +7,21 @@
         </h2>
         <div class="row justify-content-center">
             <div class="col">
-                <div class="card">
+                {{-- PROJECTS --}}
+                <div class="card mb-3">
                     <div class="card-header">{{ __('User Dashboard') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                        @include('partials.all-projects')
+                    </div>
+                </div>
 
-                        {{ __('You are logged in!') }}
+                {{-- TYPES --}}
+                <div class="card mb-3">
+                    <div class="card-header">{{ __('Types') }}</div>
+
+                    <div class="card-body">
+                        @include('partials.all-types')
                     </div>
                 </div>
             </div>
