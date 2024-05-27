@@ -38,6 +38,18 @@
             </div>
 
             <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
+                    @foreach ($technologies as $tech)
+                        <option value="{{ $tech->id }}"
+                            {{ in_array($tech->id, old('technologies', [])) ? 'selected' : '' }}>
+                            {{ $tech->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="image" class="form-label">Cover Image:</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                     id="image" />
