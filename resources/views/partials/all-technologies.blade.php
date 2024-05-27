@@ -7,6 +7,8 @@
                     <th scope="col">id</th>
                     <th scope="col">name</th>
                     <th scope="col">slug</th>
+                    <th scope="col">color</th>
+
                     <th class="text-end" scope="col">actions</th>
                 </tr>
             </thead>
@@ -16,6 +18,10 @@
                         <th scope="row">{{ $tech->id }}</th>
                         <td>{{ $tech->name }}</td>
                         <td>{{ $tech->slug }}</td>
+                        <td>
+                            <div class="rounded w-50"
+                                style="height:50px;background-color: {{ $tech->color ?? '#0D6EFD' }}; "></div>
+                        </td>
                         <td>
                             <div class="d-flex justify-content-end gap-1">
 
