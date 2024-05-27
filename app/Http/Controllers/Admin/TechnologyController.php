@@ -37,7 +37,6 @@ class TechnologyController extends Controller
         $val_data = $request->validated();
         $val_data['slug'] = Str::slug($request->name, '-');
 
-        // dd($val_data);
         $tech = Technology::create($val_data);
 
         if ($request->has('projects')) {
@@ -52,7 +51,7 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        return back();
     }
 
     /**
@@ -60,7 +59,8 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        $projects = Project::all();
+        return view('admin.technologies.edit', compact('projects', 'technology'));
     }
 
     /**
@@ -68,7 +68,19 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->name, '-');
+
+        $technology->update($val_data);
+
+        if ($request->has('projects')) {
+            $technology->projects()->sync($val_data['projects']);
+        } else {
+            $technology->projects()->detach();
+        }
+
+        return to_route('admin.technologies.index', $technology)->with('message', "Project $technology->name updated successfully");
     }
 
     /**
@@ -76,6 +88,9 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->projects()->detach();
+        $technology->delete();
+
+        return to_route('admin.technologies.index')->with('message', 'Technology deleted successfully');
     }
 }

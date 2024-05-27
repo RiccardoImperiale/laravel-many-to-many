@@ -30,9 +30,9 @@
                             <td>
                                 <div class="d-flex justify-content-end gap-1">
 
-                                    <a class="btn btn-dark" href="{{ route('admin.technologies.show', $tech) }}">
+                                    {{-- <a class="btn btn-dark" href="{{ route('admin.technologies.show', $tech) }}">
                                         <span style="font-size: 0.7rem" class="text-uppercase">Show</span>
-                                    </a>
+                                    </a> --}}
 
                                     <a class="btn btn-dark" href="{{ route('admin.technologies.edit', $tech) }}">
                                         <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
