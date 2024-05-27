@@ -20,7 +20,8 @@
                         <td>
                             @if (Str::startsWith($project->image, 'uploads/'))
                                 <div class="image_container">
-                                    <img src="{{ asset("storage/$project->image") }}" alt="{{ $project->title }}">
+                                    <img class="rounded" src="{{ asset("storage/$project->image") }}"
+                                        alt="{{ $project->title }}">
                                 </div>
                             @endif
                         </td>

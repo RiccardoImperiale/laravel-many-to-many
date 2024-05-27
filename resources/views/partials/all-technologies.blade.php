@@ -20,7 +20,7 @@
                         <td>{{ $tech->slug }}</td>
                         <td>
                             <div class="rounded w-50"
-                                style="height:50px;background-color: {{ $tech->color ?? '#0D6EFD' }}; "></div>
+                                style="height:25px;background-color: {{ $tech->color ?? '#0D6EFD' }}; "></div>
                         </td>
                         <td>
                             <div class="d-flex justify-content-end gap-1">
