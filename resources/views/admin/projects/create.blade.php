@@ -14,6 +14,7 @@
         <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
+            {{-- TITLE --}}
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
@@ -25,6 +26,7 @@
                 @enderror
             </div>
 
+            {{-- TYPES --}}
             <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
                 <select class="form-select form-select-lg" name="type_id" id="type_id">
@@ -37,6 +39,7 @@
                 </select>
             </div>
 
+            {{-- TECHNOLOGIES --}}
             <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
                 <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
@@ -49,6 +52,7 @@
                 </select>
             </div>
 
+            {{-- COVER IMAGE --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Cover Image:</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
@@ -60,6 +64,7 @@
                 @enderror
             </div>
 
+            {{-- DESCRIPTION --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
@@ -71,6 +76,7 @@
                 @enderror
             </div>
 
+            {{-- LIVE LINK --}}
             <div class="mb-3">
                 <label for="live_link" class="form-label">Live Link:</label>
                 <input type="text" class="form-control @error('live_link') is-invalid @enderror" name="live_link"
@@ -82,6 +88,7 @@
                 @enderror
             </div>
 
+            {{-- CODE LINK --}}
             <div class="mb-3">
                 <label for="code_link" class="form-label">Code Link:</label>
                 <input type="text" class="form-control @error('code_link') is-invalid @enderror" name="code_link"

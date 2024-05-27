@@ -65,7 +65,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     // /**
@@ -75,19 +76,23 @@ class ProjectController extends Controller
     {
         $val_data = $request->validated();
 
-        $slug = Str::slug($request->title, '-');
-        $val_data['slug'] = $slug;
+        $val_data['slug'] = Str::slug($request->title, '-');
 
         if ($request->has('image')) {
             if ($project->image) {
                 Storage::delete($project->image);
             }
 
-            $img_path = Storage::put('uploads', $request->image);
-            $val_data['image'] = $img_path;
+            $val_data['image'] = Storage::put('uploads', $request->image);
         }
 
         $project->update($val_data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($val_data['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
 
         return to_route('admin.projects.index', $project)->with('message', "Project $project->title updated successfully");
     }

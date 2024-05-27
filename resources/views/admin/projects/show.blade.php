@@ -22,7 +22,6 @@
                             <h5>Description:</h5>
                             <p class="description">{{ $project->description }}</p>
                         @endif
-
                     </div>
                     <div class="d-flex gap-2">
                         <a class="btn btn-dark" target="_blank" href="{{ $project->live_link }}">Live Version</a>
