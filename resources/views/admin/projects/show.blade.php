@@ -8,6 +8,11 @@
                 <div class="ps-5 py-2 d-flex flex-column justify-content-between w-100">
                     <div>
                         <h2 class="title">{{ $project->title }}</h2>
+                        @if ($project->technologies)
+                            @foreach ($project->technologies as $tech)
+                                <span class="badge rounded-pill text-bg-primary">{{ $tech->name }}</span>
+                            @endforeach
+                        @endif
                         <hr>
                         @if ($project->type)
                             <h5>Type:</h5>
@@ -17,6 +22,7 @@
                             <h5>Description:</h5>
                             <p class="description">{{ $project->description }}</p>
                         @endif
+
                     </div>
                     <div class="d-flex gap-2">
                         <a class="btn btn-dark" target="_blank" href="{{ $project->live_link }}">Live Version</a>
