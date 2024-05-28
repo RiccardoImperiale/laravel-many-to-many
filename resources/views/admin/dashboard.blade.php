@@ -8,8 +8,8 @@
         <div class="row justify-content-center">
             <div class="col">
                 {{-- PROJECTS --}}
-                <div class="card mb-3">
-                    <div class="card-header">{{ __('Projects') }}</div>
+                <div class="card bg-dark text-white border-secondary mb-3">
+                    <div class="card-header bg-secondary text-dark">{{ __('Projects') }}</div>
 
                     <div class="card-body">
                         @if (count($projects) > 0)
@@ -22,8 +22,8 @@
                 </div>
 
                 {{-- TYPES --}}
-                <div class="card mb-3">
-                    <div class="card-header">{{ __('Types') }}</div>
+                <div class="card bg-dark text-white border-secondary mb-3">
+                    <div class="card-header bg-secondary text-dark">{{ __('Types') }}</div>
 
                     <div class="card-body">
                         @if (count($types) > 0)
@@ -36,8 +36,8 @@
                 </div>
 
                 {{-- TECHNOLOGIES --}}
-                <div class="card mb-3">
-                    <div class="card-header">{{ __('Technologies') }}</div>
+                <div class="card bg-dark text-white border-secondary mb-3">
+                    <div class="card-header bg-secondary text-dark">{{ __('Technologies') }}</div>
 
                     <div class="card-body">
                         @if (count($technologies) > 0)

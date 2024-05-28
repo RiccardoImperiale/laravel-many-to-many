@@ -1,7 +1,7 @@
 <div class="container">
     @include('partials.session-messages')
     <div class="mt-4">
-        <table class="table align-middle table-hover">
+        <table class="table table-dark align-middle table-hover">
             <thead>
                 <tr>
                     <th scope="col">id</th>
