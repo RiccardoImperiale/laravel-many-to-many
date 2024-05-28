@@ -17,7 +17,7 @@
                         <div class="input-group">
                             <input name="name" type="text"
                                 class="form-control {{ old('form_name') === 'form1' ? 'is-invalid' : '' }}"
-                                placeholder="New Type..." value="{{ old('name') }}">
+                                placeholder="New Type..." value="{{ old('form_name') === 'form1' ? old('name') : '' }}">
                             <button class="btn btn-primary" type="submit">Add</button>
                         </div>
                         <input type="hidden" name="form_name" value="form1">

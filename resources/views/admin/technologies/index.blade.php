@@ -17,7 +17,8 @@
                         @csrf
                         <div class="input-group">
                             <input class="form-control w-50 {{ old('form_name') === 'form1' ? 'is-invalid' : '' }}"
-                                type="text" name="name" placeholder="New Tech..." value="{{ old('name') }}">
+                                type="text" name="name" placeholder="New Tech..."
+                                value="{{ old('form_name') === 'form1' ? old('name') : '' }}">
                             <input class="form-control form-control-color" type="color" name="color"
                                 value="{{ $tech->color ?? '#bfbfbf' }}">
                             <button class="btn btn-success" type="submit">Add</button>
