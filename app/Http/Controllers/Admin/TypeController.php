@@ -24,9 +24,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.types.create');
+        // return view('admin.types.create');
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -46,7 +45,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        return view('admin.types.show', compact('type'));
+        // return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -54,7 +53,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('type'));
+        // return view('admin.types.edit', compact('type'));
     }
 
     /**

@@ -10,7 +10,7 @@
                         <h2 class="title">{{ $project->title }}</h2>
                         @if ($project->technologies)
                             @foreach ($project->technologies as $tech)
-                                <span style="background-color:{{ $tech->color ?? '#0D6EFD' }};"
+                                <span style="background-color:{{ $tech->color ?? 'gray' }};"
                                     class="badge rounded-pill">{{ $tech->name }}</span>
                             @endforeach
                         @endif
