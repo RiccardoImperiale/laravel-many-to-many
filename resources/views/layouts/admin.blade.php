@@ -46,13 +46,15 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('All Projects') }}</a>
+                            <a class="nav-link {{ Route::is('admin.projects.index') ? 'bg-dark rounded text-white' : '' }}"
+                                href="{{ route('admin.projects.index') }}">{{ __('All Projects') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
+                            <a class="nav-link {{ Route::is('admin.types.index') ? 'bg-dark rounded text-white' : '' }}"
+                                href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link {{ Route::is('admin.technologies.index') ? 'bg-dark rounded text-white' : '' }}"
                                 href="{{ route('admin.technologies.index') }}">{{ __('Technologies') }}</a>
                         </li>
                     </ul>
