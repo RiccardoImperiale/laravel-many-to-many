@@ -1,11 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <header class="py-3 bg-dark text-white">
-        <div class="container d-flex justify-content-between align-items-center">
-            <h2 class="text-center">Types</h2>
-        </div>
-    </header>
+    @include('partials.heading', ['heading' => 'Types'])
+
     @if (count($types) > 0)
         <div class="container pt-4">
             @include('partials.session-messages')
