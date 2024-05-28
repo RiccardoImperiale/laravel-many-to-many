@@ -1,7 +1,7 @@
 <div class="container">
     @include('partials.session-messages')
     <div class="mt-4">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle table-hover table-dark">
             <thead>
                 <tr>
                     <th scope="col">id</th>
@@ -26,11 +26,11 @@
                             @endif
                         </td>
                         <td>
-                            <div class="d-flex justify-content-end gap-1">
-                                <a class="btn btn-dark pb-2" href="{{ route('admin.projects.show', $project) }}">
+                            <div class="d-flex justify-content-end gap-2">
+                                <a class="btn btn-primary pb-2" href="{{ route('admin.projects.show', $project) }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">View</span>
                                 </a>
-                                <a class="btn btn-dark pb-2" href="{{ route('admin.projects.edit', $project) }}">
+                                <a class="btn btn-primary pb-2" href="{{ route('admin.projects.edit', $project) }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
                                 </a>
 

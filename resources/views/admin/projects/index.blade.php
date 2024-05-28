@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('partials.heading', ['heading' => 'Projects'])
+    <header class="heading py-3 text-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h2 class="fw-lighter text-primary">Projects</h2>
+            <a class="btn btn-primary h-100" href="{{ route('admin.projects.create') }}">
+                Add New Project
+            </a>
+        </div>
+    </header>
 
     @if (count($projects) > 0)
         @include('partials.all-projects')

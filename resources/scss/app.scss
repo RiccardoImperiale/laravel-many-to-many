@@ -12,16 +12,44 @@
     }
 }
 
-// .pagination {
-//     margin-top: 5rem;
-// }
+// pagination ------------------------------>
 
-.page-link {
-    color: #656565;
+.pagination {
+
+
+    .page-link {
+        color: #595959;
+    }
+
+    .page-link.active,
+    .active>.page-link {
+        background-color: #212529;
+        border-color: #b9b9b9;
+    }
+
+    .page-item.active .page-link {
+        color: #b9b9b9 !important;
+        background: rgb(102, 102, 102) !important;
+    }
+
 }
 
-.page-link.active,
-.active>.page-link {
+.text-muted {
+    color: rgb(84, 84, 84) !important;
+}
+
+
+
+
+.heading {
+    background-color: #1a1a1a;
+}
+
+body {
     background-color: #212529;
-    border-color: #212529;
+}
+
+.form-control::placeholder {
+    color: #b6b6b6;
+    opacity: 0.6;
 }
