@@ -18,7 +18,7 @@
             {{-- NAME --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                <input type="text" class="form-control @error('name') is-invalid @enderror name="name" id="name"
                     placeholder="name" value="{{ old('name', $technology->name) }}" />
                 @error('name')
                     <div class="text-danger py-2">

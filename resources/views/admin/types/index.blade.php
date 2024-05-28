@@ -10,42 +10,51 @@
         </div>
     </header>
     @if (count($types) > 0)
-        <div class="container">
+        <div class="container pt-4">
             @include('partials.session-messages')
+            @include('partials.validation-messages')
             <div class="row">
                 <div class="col-12 col-md-5 mt-4">
                     <form action="{{ route('admin.types.store') }}" method="post">
                         @csrf
                         <div class="input-group">
-                            <input name="name" type="text" class="form-control" placeholder="New Type..."
-                                @error('name') is-invalid @enderror>
+                            <input name="name" type="text"
+                                class="form-control {{ old('form_name') === 'form1' ? 'is-invalid' : '' }}"
+                                placeholder="New Type...">
                             <button class="btn btn-primary" type="submit">Add</button>
                         </div>
-                        @error('name')
+                        <input type="hidden" name="form_name" value="form1">
+                        @if (old('form_name') === 'form1')
                             <div class="text-danger py-2">
-                                {{ $message }}
+                                {{ $errors->first('name') }}
                             </div>
-                        @enderror
+                        @endif
                     </form>
                 </div>
+
 
                 <div class="col-12 col-md-7 mt-4">
                     <table class="table align-middle table-hover">
                         <thead class="table-dark">
                             <tr>
-                                <th class=" ps-3" scope="col">name</th>
+                                <th class="ps-3" scope="col">name</th>
                                 <th scope="col">slug</th>
                                 <th class="text-end pe-3" scope="col">actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            @foreach ($types as $type)
+                            @foreach ($types as $index => $type)
                                 <tr>
                                     <td>
                                         <form action="{{ route('admin.types.update', $type) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="text" name="name" placeholder="{{ $type->name }}">
+                                            <input
+                                                class="form-control {{ old('form_name') === "form_$index" ? 'is-invalid' : '' }}"
+                                                type="text" name="name" placeholder="{{ $type->name }}"
+                                                value="{{ old('name', $type->name) }}">
+                                            {{-- how can I get old name for a specific input only??? --}}
+                                            <input type="hidden" name="form_name" value="form_{{ $index }}">
                                         </form>
                                     </td>
                                     <td>{{ $type->slug }}</td>
@@ -99,7 +108,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                     {{ $types->links('pagination::bootstrap-5') }}
                 </div>
 
