@@ -25,8 +25,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        $projects = Project::all();
-        return view('admin.technologies.create', compact('projects'));
+        return back();
     }
 
     /**
@@ -59,8 +58,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        $projects = Project::all();
-        return view('admin.technologies.edit', compact('projects', 'technology'));
+        return back();
     }
 
     /**
