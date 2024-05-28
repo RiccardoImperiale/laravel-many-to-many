@@ -8,7 +8,7 @@
                     <th scope="col">title</th>
                     <th scope="col">type</th>
                     <th scope="col">image</th>
-                    <th class="text-end" scope="col">actions</th>
+                    <th class="text-end pe-3" scope="col">actions</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -27,15 +27,15 @@
                         </td>
                         <td>
                             <div class="d-flex justify-content-end gap-1">
-                                <a class="btn btn-dark" href="{{ route('admin.projects.show', $project) }}">
+                                <a class="btn btn-dark pb-2" href="{{ route('admin.projects.show', $project) }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">View</span>
                                 </a>
-                                <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">
+                                <a class="btn btn-dark pb-2" href="{{ route('admin.projects.edit', $project) }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">Edit</span>
                                 </a>
 
                                 <!-- Modal trigger button -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger pb-2" data-bs-toggle="modal"
                                     data-bs-target="#modal-{{ $project->id }}">
                                     <span style="font-size: 0.7rem" class="text-uppercase">Delete</span>
                                 </button>

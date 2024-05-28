@@ -24,9 +24,11 @@
                         </div>
                         <input type="hidden" name="form_name" value="form1">
                         @if (old('form_name') === 'form1')
-                            <div class="text-danger py-2">
-                                {{ $errors->first('name') }}
-                            </div>
+                            @error('name')
+                                <div class="text-danger py-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         @endif
                     </form>
                 </div>

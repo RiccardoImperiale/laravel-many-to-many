@@ -3,10 +3,7 @@
 @section('content')
     <header class="py-3 bg-dark text-white">
         <div class="container d-flex justify-content-between align-items-center">
-            <h2 class="text-center">All Types</h2>
-            {{-- <a class="btn btn-primary h-100" href="{{ route('admin.types.create') }}">
-                Add New type
-            </a> --}}
+            <h2 class="text-center">Types</h2>
         </div>
     </header>
     @if (count($types) > 0)
@@ -15,7 +12,6 @@
             @include('partials.validation-messages')
             <div class="row">
                 <div class="col-12 col-md-5 mt-4">
-
                     <form action="{{ route('admin.types.store') }}" method="post">
                         @csrf
                         <div class="input-group">
@@ -26,9 +22,11 @@
                         </div>
                         <input type="hidden" name="form_name" value="form1">
                         @if (old('form_name') === 'form1')
-                            <div class="text-danger py-2">
-                                {{ $errors->first('name') }}
-                            </div>
+                            @error('name')
+                                <div class="text-danger py-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         @endif
                     </form>
                 </div>
