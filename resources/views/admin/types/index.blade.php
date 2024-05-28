@@ -15,6 +15,7 @@
             @include('partials.validation-messages')
             <div class="row">
                 <div class="col-12 col-md-5 mt-4">
+
                     <form action="{{ route('admin.types.store') }}" method="post">
                         @csrf
                         <div class="input-group">

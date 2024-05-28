@@ -7,7 +7,7 @@
         </div>
     </header>
     @if (count($technologies) > 0)
-        <div class="container">
+        <div class="container pt-4">
             @include('partials.session-messages')
             @include('partials.validation-messages')
 
@@ -16,10 +16,18 @@
                     <form action="{{ route('admin.technologies.store') }}" method="post">
                         @csrf
                         <div class="input-group">
-                            <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="New Tech...">
-                            <button class="btn btn-primary" type="submit">Add</button>
+                            <input class="form-control w-50 {{ old('form_name') === 'form1' ? 'is-invalid' : '' }}"
+                                type="text" name="name" placeholder="New Tech..." value="{{ old('name') }}">
+                            <input class="form-control form-control-color" type="color" name="color"
+                                value="{{ $tech->color ?? '#bfbfbf' }}">
+                            <button class="btn btn-success" type="submit">Add</button>
                         </div>
+                        <input type="hidden" name="form_name" value="form1">
+                        @if (old('form_name') === 'form1')
+                            <div class="text-danger py-2">
+                                {{ $errors->first('name') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
 
@@ -28,29 +36,30 @@
                         <thead class="table-dark">
                             <tr>
                                 <th class="ps-3" scope="col">name & color</th>
-                                <th scope="col">slug</th>
-
+                                <th class="text-center" scope="col">slug</th>
                                 <th class="text-end pe-3" scope="col">actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            @foreach ($technologies as $tech)
+                            @foreach ($technologies as $index => $tech)
                                 <tr>
                                     <td>
                                         <form action="{{ route('admin.technologies.update', $tech) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="input-group">
-                                                <input class="form-control w-50 @error('name') is-invalid @enderror""
+                                                <input
+                                                    class="form-control w-50 {{ old('form_name') === "form_$index" ? 'is-invalid' : '' }}"
                                                     type="text" name="name" placeholder="{{ $tech->name }}"
                                                     value="{{ $tech->name }}">
                                                 <input class="form-control form-control-color" type="color" name="color"
                                                     value="{{ $tech->color ?? '#ffffff' }}">
-                                                <button class="btn btn-secondary" type="submit">Add</button>
+                                                <button class="btn btn-success" type="submit">+</button>
                                             </div>
+                                            <input type="hidden" name="form_name" value="form_{{ $index }}">
                                         </form>
                                     </td>
-                                    <td>{{ $tech->slug }}</td>
+                                    <td class="text-center">{{ $tech->slug }}</td>
                                     <td>
                                         <div class="d-flex justify-content-end gap-1">
 
