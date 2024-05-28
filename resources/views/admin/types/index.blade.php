@@ -41,17 +41,17 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            @foreach ($types as $index => $type)
+                            @foreach ($types as $type)
                                 <tr>
                                     <td>
                                         <form action="{{ route('admin.types.update', $type) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <input
-                                                class="form-control {{ old('form_name') === "form_$index" ? 'is-invalid' : '' }}"
-                                                type="text" name="name" placeholder="{{ $type->name }}">
-                                            {{-- how can I get old name for a specific input only??? --}}
-                                            <input type="hidden" name="form_name" value="form_{{ $index }}">
+                                                class="form-control {{ old('form_name') === "form_$loop->index" ? 'is-invalid' : '' }}"
+                                                type="text" name="name"
+                                                value="{{ old('form_name') === "form_$loop->index" ? old('name') : $type->name }}">
+                                            <input type="hidden" name="form_name" value="form_{{ $loop->index }}">
                                         </form>
                                     </td>
                                     <td>{{ $type->slug }}</td>

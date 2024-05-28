@@ -43,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            @foreach ($technologies as $index => $tech)
+                            @foreach ($technologies as $tech)
                                 <tr>
                                     <td>
                                         <form action="{{ route('admin.technologies.update', $tech) }}" method="post">
@@ -51,14 +51,14 @@
                                             @method('PUT')
                                             <div class="input-group">
                                                 <input
-                                                    class="form-control w-50 {{ old('form_name') === "form_$index" ? 'is-invalid' : '' }}"
-                                                    type="text" name="name" placeholder="{{ $tech->name }}"
-                                                    value="{{ $tech->name }}">
+                                                    class="form-control w-50 {{ old('form_name') === "form_$loop->index" ? 'is-invalid' : '' }}"
+                                                    type="text" name="name"
+                                                    value="{{ old('form_name') === "form_$loop->index" ? old('name') : $tech->name }}">
                                                 <input class="form-control form-control-color" type="color" name="color"
                                                     value="{{ $tech->color ?? '#ffffff' }}">
                                                 <button class="btn btn-success" type="submit">+</button>
                                             </div>
-                                            <input type="hidden" name="form_name" value="form_{{ $index }}">
+                                            <input type="hidden" name="form_name" value="form_{{ $loop->index }}">
                                         </form>
                                     </td>
                                     <td class="text-center">{{ $tech->slug }}</td>
