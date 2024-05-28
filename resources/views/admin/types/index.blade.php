@@ -20,7 +20,7 @@
                         <div class="input-group">
                             <input name="name" type="text"
                                 class="form-control {{ old('form_name') === 'form1' ? 'is-invalid' : '' }}"
-                                placeholder="New Type...">
+                                placeholder="New Type..." value="{{ old('name') }}">
                             <button class="btn btn-primary" type="submit">Add</button>
                         </div>
                         <input type="hidden" name="form_name" value="form1">
@@ -31,7 +31,6 @@
                         @endif
                     </form>
                 </div>
-
 
                 <div class="col-12 col-md-7 mt-4">
                     <table class="table align-middle table-hover">
@@ -51,8 +50,7 @@
                                             @method('PUT')
                                             <input
                                                 class="form-control {{ old('form_name') === "form_$index" ? 'is-invalid' : '' }}"
-                                                type="text" name="name" placeholder="{{ $type->name }}"
-                                                value="{{ old('name', $type->name) }}">
+                                                type="text" name="name" placeholder="{{ $type->name }}">
                                             {{-- how can I get old name for a specific input only??? --}}
                                             <input type="hidden" name="form_name" value="form_{{ $index }}">
                                         </form>
